@@ -1,0 +1,85 @@
+Got it 👍
+Here’s a refined **README.md** where it’s clear this project is just a **demo frontend + mock backend**, not the full production system:
+
+```markdown
+# Production Tracking Application (Demo)
+
+This project is a **demo** of a production tracking application.  
+It includes a **React (CDN + JSX)** frontend and a minimal **Flask backend** with mock data.  
+
+⚠️ **Note:** This is only a **demo prototype of the frontend**. It is not a full production-ready system.  
+The backend uses in-memory lists instead of a real database, so data resets on each restart.
+
+---
+
+## 🚀 Features (Demo Only)
+- Display ongoing productions (mock data)
+- Show production progress bars
+- View completed and canceled production history
+- Add new production (stored only in memory during runtime)
+- Responsive and mobile-friendly UI (TailwindCSS)
+
+---
+
+## 📂 Project Structure
+```
+
+your\_project/
+│
+├── app.py               # Flask backend (demo only, mock data)
+├── static/
+│   └── index.html       # React frontend demo
+└── README.md
+
+````
+
+---
+
+## ⚙️ Run the Demo
+
+### 1. Create and Activate a Virtual Environment
+```bash
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+````
+
+### 2. Install Dependencies
+
+```bash
+pip install flask
+```
+
+### 3. Start the Server
+
+```bash
+python app.py
+```
+
+Visit in browser:
+👉 `http://127.0.0.1:5000/`
+
+---
+
+## 📡 Demo API Endpoints
+
+The backend provides mock API endpoints for demonstration purposes:
+
+* `GET /api/ongoing` → Returns ongoing productions (hardcoded list)
+* `GET /api/history` → Returns production history (hardcoded list)
+* `POST /api/production` → Adds a new production (temporary, in memory only)
+
+---
+
+## 🛠 Technologies
+
+* **Frontend:** React (CDN), TailwindCSS, Feather Icons
+* **Backend:** Flask (demo with in-memory data)
+
+---
+
+## 📌 Notes
+
+* This is **not a complete system** — just a **frontend demo** with a minimal backend for demonstration.
+* A real-world version would connect to a database and provide persistent storage, authentication, and real-time updates.
+
