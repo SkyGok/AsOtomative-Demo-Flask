@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Production: {% block title %}{% endblock %}</title>
+</head>
+<body class="flex flex-col max-w-screen max-h-screen bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white border-b shadow-sm">
+    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <!-- Brand -->
+      <a href="/" class="font-bold text-lg">
+        <span class="text-red-500">As</span><span class="text-gray-800">Auto</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/upload" class="hover:text-orange-600">Upload</a>
+        <a href="/info" class="hover:text-orange-600">Info</a>
+        <a href="/history" class="hover:text-orange-600">History</a>
+      
+        <!-- {% if session["user_id"] %} -->
+          <!-- <a href="/upload" class="hover:text-orange-600">Upload</a>
+          <a href="/info" class="hover:text-orange-600">Info</a>
+          <a href="/history" class="hover:text-orange-600">History</a>
+          <a href="/logout" class="text-red-500 hover:text-red-600">Log Out</a> -->
+        <!-- {% else %}
+          <a href="/register" class="hover:text-orange-600">Register</a>
+          <a href="/login" class="hover:text-orange-600">Log In</a>
+        {% endif %} -->
+      </div>
+
+      <!-- Mobile Button -->
+      <button id="menu-toggle" class="md:hidden p-2 rounded hover:bg-gray-100">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden flex-col space-y-2 px-4 pb-4">
+      {% if session["user_id"] %}
+        <a href="/upload" class="block hover:text-orange-600">Upload</a>
+        <a href="/info" class="block hover:text-orange-600">Info</a>
+        <a href="/history" class="block hover:text-orange-600">History</a>
+        <a href="/logout" class="block text-red-500 hover:text-red-600">Log Out</a>
+      {% else %}
+        <a href="/register" class="block hover:text-orange-600">Register</a>
+        <a href="/login" class="block hover:text-orange-600">Log In</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- Flash Messages -->
+  {% if get_flashed_messages() %}
+    <div class="bg-orange-500 text-white text-center py-2 text-sm">
+      {{ get_flashed_messages() | join(" ") }}
+    </div>
+  {% endif %}
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-6xl mx-auto p-4">
+    {% block main %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t text-center text-gray-500 py-3 text-sm">
+    &copy; {{ current_year }} UNIMAK
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
